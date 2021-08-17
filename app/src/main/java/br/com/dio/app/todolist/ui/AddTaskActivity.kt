@@ -121,7 +121,7 @@ class AddTaskActivity : AppCompatActivity() {
                 finish()
             } else {
                 val builder = AlertDialog.Builder(this)
-                builder.setMessage("A data de início tem que ser maior que a data de fim!")
+                builder.setMessage("A data de fim tem que ser maior que a data de início!")
                 val dialog: AlertDialog = builder.create()
                 dialog.show()
             }
