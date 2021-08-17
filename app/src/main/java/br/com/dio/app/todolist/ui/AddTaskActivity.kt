@@ -135,9 +135,9 @@ class AddTaskActivity : AppCompatActivity() {
         val strDateIni = sdf.parse(dataIni)
         val strDateFim = sdf.parse(dataFim)
 
-        if (strDateIni.after(strDateFim)) {
+        if (strDateIni?.after(strDateFim) == true) {
             return 1
-        } else if (strDateIni.before(strDateFim)) {
+        } else if (strDateIni?.before(strDateFim) == true) {
             return -1
         } else {
             return 0
