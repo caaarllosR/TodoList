@@ -1,40 +1,43 @@
 package br.com.dio.app.todolist.ui
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.com.dio.app.todolist.databinding.ActivityAddTaskBinding
-import br.com.dio.app.todolist.datasource.TaskDataSource
 import br.com.dio.app.todolist.extensions.format
 import br.com.dio.app.todolist.extensions.text
 import br.com.dio.app.todolist.model.Task
+import br.com.dio.app.todolist.App
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.TimeZone
+import java.util.Date
 
 class AddTaskActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAddTaskBinding
+    private val binding by lazy { ActivityAddTaskBinding.inflate(layoutInflater) }
+    private val mainViewModel: MainViewModel by viewModels {
+        MainViewModelFactory((application as App).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (intent.hasExtra(TASK_ID)) {
-            val taskId = intent.getIntExtra(TASK_ID, 0)
-            TaskDataSource.findById(taskId)?.let {
-                binding.tilTitle.text = it.title
-                binding.tilDateIni.text = it.dateIni
-                binding.tilDateFim.text = it.dateFim
-                binding.tilHourIni.text = it.hourIni
-                binding.tilHourFim.text = it.hourIni
-            }
-        }
+        //if (intent.hasExtra(TASK_ID)) {
+        //    val taskId = intent.getIntExtra(TASK_ID, 0)
+        //    TaskDataSource.findById(taskId)?.let {
+        //        binding.tilTitle.text = it.title
+        //        binding.tilDateIni.text = it.dateIni
+        //        binding.tilDateFim.text = it.dateFim
+        //        binding.tilHourIni.text = it.hourIni
+        //        binding.tilHourFim.text = it.hourIni
+        //    }
+        //}
 
         insertListeners()
     }
@@ -113,11 +116,10 @@ class AddTaskActivity : AppCompatActivity() {
                     dateIni = binding.tilDateIni.text,
                     dateFim = binding.tilDateFim.text,
                     hourIni = binding.tilHourIni.text,
-                    hourFim = binding.tilHourFim.text,
-                    id = intent.getIntExtra(TASK_ID, 0)
+                    hourFim = binding.tilHourFim.text
                 )
-                TaskDataSource.insertTask(task)
-                setResult(Activity.RESULT_OK)
+                mainViewModel.insert(task)
+                //setResult(Activity.RESULT_OK)
                 finish()
             } else {
                 val builder = AlertDialog.Builder(this)
