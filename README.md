@@ -5,6 +5,7 @@ Neste projeto do bootcamp da Digital Innovation One, foi desenvolvido um app de 
 
 Técnoligias utilizadas no desenvolvimento do sistema contido neste repositório:
 
+
 * Android Studio 2020.3.1
 * Room versão 2.3.0
 * Kotlin versão 1.5.20
