@@ -25,20 +25,7 @@ class AddTaskActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(binding.root)
-
-        //if (intent.hasExtra(TASK_ID)) {
-        //    val taskId = intent.getIntExtra(TASK_ID, 0)
-        //    TaskDataSource.findById(taskId)?.let {
-        //        binding.tilTitle.text = it.title
-        //        binding.tilDateIni.text = it.dateIni
-        //        binding.tilDateFim.text = it.dateFim
-        //        binding.tilHourIni.text = it.hourIni
-        //        binding.tilHourFim.text = it.hourIni
-        //    }
-        //}
-
         insertListeners()
     }
 
@@ -116,7 +103,8 @@ class AddTaskActivity : AppCompatActivity() {
                     dateIni = binding.tilDateIni.text,
                     dateFim = binding.tilDateFim.text,
                     hourIni = binding.tilHourIni.text,
-                    hourFim = binding.tilHourFim.text
+                    hourFim = binding.tilHourFim.text,
+                    id = intent.getIntExtra(TASK_ID, 0)
                 )
                 mainViewModel.insert(task)
                 //setResult(Activity.RESULT_OK)

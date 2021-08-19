@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Develop/Kotlin/ToDoList - Copia/app/src/main/res/layout/activity_add_task.xml" value="0.1381340579710145" />
+        <entry key="..\:/Develop/Kotlin/ToDoList - Copia/app/src/main/res/layout/activity_main.xml" value="0.1381340579710145" />
+        <entry key="..\:/Develop/Kotlin/ToDoList - Copia/app/src/main/res/layout/item_task.xml" value="0.1381340579710145" />
+        <entry key="..\:/Develop/Kotlin/ToDoList - Copia/app/src/main/res/menu/popup_menu.xml" value="0.1796875" />
         <entry key="..\:/Develop/Kotlin/ToDoList/app/src/main/res/drawable/ic_add.xml" value="0.19583333333333333" />
         <entry key="..\:/Develop/Kotlin/ToDoList/app/src/main/res/drawable/ic_calendar.xml" value="0.19583333333333333" />
         <entry key="..\:/Develop/Kotlin/ToDoList/app/src/main/res/drawable/ic_empty.xml" value="0.19583333333333333" />

@@ -14,11 +14,13 @@ class TaskRepository (private val dao: TaskDAO) {
             }
         }
 
-        fun deleteByTaskId(cardId: Int) = runBlocking {
+        fun deleteByTaskId(taskId: Int) = runBlocking {
             launch(Dispatchers.IO) {
-                dao.deleteByCardId(cardId)
+                dao.deleteByTaskId(taskId)
             }
         }
+
+        fun getByTaskId(taskId: Int) = dao.getByTaskId(taskId)
 
         fun getAll() = dao.getAll()
 }

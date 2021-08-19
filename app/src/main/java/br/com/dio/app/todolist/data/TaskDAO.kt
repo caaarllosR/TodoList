@@ -13,9 +13,12 @@ interface TaskDAO {
     @Query("SELECT * FROM Task")
     fun getAll(): LiveData<List<Task>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(businessCard: Task)
+    @Query("SELECT * FROM Task WHERE id = :taskId")
+    fun getByTaskId(taskId: Int): LiveData<List<Task>>
 
-    @Query("DELETE FROM Task WHERE id = :cardId")
-    fun deleteByCardId(cardId: Int);
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(task: Task)
+
+    @Query("DELETE FROM Task WHERE id = :taskId")
+    fun deleteByTaskId(taskId: Int);
 }

@@ -1,5 +1,6 @@
 package br.com.dio.app.todolist.ui
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -20,13 +21,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         binding.rvTasks.adapter = adapter
         getAllTask()
-
         insertListeners()
-        //DATA STORE
-        //ROOM
     }
 
     private fun insertListeners() {
@@ -34,12 +31,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddTaskActivity::class.java)
             startActivity(intent)
         }
-
-        //adapter.listenerEdit = {
-        //    val intent = Intent(this, AddTaskActivity::class.java)
-        //    intent.putExtra(AddTaskActivity.TASK_ID, it.id)
-        //    startActivityForResult(intent, CREATE_NEW_TASK)
-        //}
 
         adapter.listenerDelete = {
             mainViewModel.deleteByTaskId(it.id)
@@ -55,5 +46,7 @@ class MainActivity : AppCompatActivity() {
             adapter.submitList(task)
         })
    }
-
+    companion object {
+        private const val CREATE_NEW_TASK = 1000
+    }
 }

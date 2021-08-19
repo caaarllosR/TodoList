@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.com.dio.app.todolist.data.TaskRepository
 import br.com.dio.app.todolist.model.Task
+import kotlinx.coroutines.Job
 
 class MainViewModel(private val taskRepository: TaskRepository): ViewModel() {
 
@@ -12,8 +13,8 @@ class MainViewModel(private val taskRepository: TaskRepository): ViewModel() {
         taskRepository.insert(task)
     }
 
-    fun deleteByTaskId(cardId: Int) {
-        taskRepository.deleteByTaskId(cardId)
+    fun deleteByTaskId(taskId: Int) {
+        taskRepository.deleteByTaskId(taskId)
     }
 
     fun getAll(): LiveData<List<Task>> {
